@@ -8,7 +8,7 @@ public class Main {
         Main.printArray(arr);
     }
 
-    public static int partition(int[] array, int low, int high) {
+    public static int partition(int[] array, int low, int high) { //O(n log(n))
         int pivot = array[(low + high) / 2];
 
         while (low <= high) {
