@@ -6,20 +6,30 @@ public class Main {
     }
 
     public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
-        while(l1.next != null) {
-            if(l1.next.val >= l2.val) {
-                ListNode temp = l1.next;
-                l1.next = l2;
-                l1.next.next = temp;
+        ListNode dummyNode = new ListNode(-1);
+        ListNode tail = dummyNode;
 
+        while(true) {
+            if(l1 == null) {
+                tail.next = l2;
+                break;
+            }
+            if(l2 == null) {
+                tail.next = l1;
+                break;
+            }
+
+            if(l1.val <= l2.val) {
+                tail.next = l1;
                 l1 = l1.next;
+            } else {
+                tail.next = l2;
                 l2 = l2.next;
             }
-            else {
-                l1 = l1.next;
-            }
+
+            tail = tail.next;
         }
-        return l1;
+        return dummyNode.next;
     }
 }
 
