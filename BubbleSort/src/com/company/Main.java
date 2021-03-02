@@ -9,7 +9,7 @@ public class Main {
     public static void bubbleSort(int[] array) {
 
         for (int i = 0; i < array.length; i++) { // O(n^2) - time
-            for (int j = 0; j < array.length && j + 1 < array.length; j++) {
+            for (int j = 0; j < array.length - 1; j++) {
                 if (array[j] > array[j + 1]) {
                     int temp = array[j];
                     array[j] = array[j + 1];
