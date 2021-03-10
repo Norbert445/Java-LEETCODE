@@ -7,6 +7,12 @@ public class Main {
     }
 
     public int trailingZeroes(int n) {
-        return 0;
-    } // Nedokončené
+        int count = 0;
+
+        for(int i = 5; i >= 1; i *= 5) {
+            count += n / i;
+        }
+
+        return count;
+    }
 }
