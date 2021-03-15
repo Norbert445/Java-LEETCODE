@@ -7,33 +7,17 @@ public class Main {
     }
 
     public String longestCommonPrefix(String[] strs) {
-        if(strs.length == 0) return "";
-        if(strs.length == 1) {
-            return strs[0];
-        }
-
         StringBuilder stringBuilder = new StringBuilder();
         int k = 0;
-        char ch;
+        if (strs.length == 0) return stringBuilder.toString();
 
-        String smallestWord = strs[0];
-        for(int i = 1; i < strs.length; i++) {
-            if(strs[i].length() < smallestWord.length()) {
-                smallestWord = strs[i];
-            }
-        }
-
-        while (k < smallestWord.length()) {
-            ch = strs[0].charAt(k);
+        for (char ch : strs[0].toCharArray()) {
             for (int i = 1; i < strs.length; i++) {
-                if (strs[i].charAt(k) == ch) {
-                    if (i == strs.length - 1) {
-                        stringBuilder.append(ch);
-                    }
-                } else {
+                if (strs[i].length() <= k || strs[i].charAt(k) != ch) {
                     return stringBuilder.toString();
                 }
             }
+            stringBuilder.append(ch);
             k++;
         }
 
