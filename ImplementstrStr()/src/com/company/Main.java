@@ -6,30 +6,23 @@ public class Main {
 	// write your code here
     }
     public int strStr(String haystack, String needle) {
-        if(needle.length() > haystack.length()) return -1;
-        if(needle.equals("")) return 0;
+        if(needle.length() == 0) return 0;
 
-        boolean equals = false;
-        int l = 0;
+        int h = haystack.length();
+        int n = needle.length();
 
-        for(int i = 0; i < haystack.length(); i++) {
-            if(haystack.charAt(i) == needle.charAt(0)) {
-                for(int j = i,k = 0; j < haystack.length() && k < needle.length(); j++,k++) {
-                    if(haystack.charAt(j) != needle.charAt(k)) {
-                        equals = false;
-                        break;
-                    } else {
-                        l++;
-                        equals = true;
-                    }
+        if(h < n) return -1;
+
+        for(int i = 0; i <= (h-n); i++) {
+            int j;
+            for(j = 0; j < n; j++) {
+                if(haystack.charAt(i + j) != needle.charAt(j)) {
+                    break;
                 }
-                if(equals && l == needle.length()) {
-                    return i;
-                }
-                l = 0;
             }
+            if(j == n) return i;
         }
 
         return -1;
-    } // Naive approach
+    }
 }
