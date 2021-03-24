@@ -28,15 +28,15 @@ public class Main {
     }
 
 
-    public static int fibonacciIterative(int num) { //O(n) - time
+    public static int fibonacciIterative(int n) { //O(n) - time
         List<Integer> list = new ArrayList<>();
         list.add(0);
         list.add(1);
 
-        for (int i = 2; i <= num; i++) {
+        for (int i = 2; i <= n; i++) {
             list.add(list.get(i - 1) + list.get(i - 2));
         }
 
-        return list.get(num);
+        return list.get(n);
     }
 }
