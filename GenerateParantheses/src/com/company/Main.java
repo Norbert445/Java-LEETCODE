@@ -12,6 +12,23 @@ public class Main {
     public List<String> generateParenthesis(int n) {
         List<String> result = new ArrayList<>();
 
+        backtrack("", result, 0, 0, n);
+
+        return result;
+    }
+
+    private void backtrack(String current, List<String> result, int open, int close, int max) {
+        if(current.length() == max * 2) {
+            result.add(current);
+            return;
+        }
+        if(open < max) backtrack(current + "(",result,open + 1,close,max);
+        if(close < open) backtrack(current + ")",result,open,close + 1,max);
+    }
+
+    /*public List<String> generateParenthesis(int n) {
+        List<String> result = new ArrayList<>();
+
         generateAll(new char[2*n], 0, result);
 
         return result;
@@ -42,5 +59,5 @@ public class Main {
             if(valid < 0) return false;
         }
         return valid == 0;
-    }
+    }*/
 }
